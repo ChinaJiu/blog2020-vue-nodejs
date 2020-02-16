@@ -43,7 +43,7 @@ router.post('/register', async (ctx) => {
 
 // 管理登录
 router.post('/login', async (ctx) => {
-
+  console.log(123)
   const v = await new AdminLoginValidator().validate(ctx);
 
   let token = await LoginManager.adminLogin({

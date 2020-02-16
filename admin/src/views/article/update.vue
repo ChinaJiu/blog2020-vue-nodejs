@@ -2,16 +2,16 @@
   <section>
     <Form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="100">
       <FormItem label="文章标题" prop="title">
-        <Input v-model="formValidate.title" placeholder="文章标题"></Input>
+        <Input v-model="formValidate.title" placeholder="文章标题" />
       </FormItem>
       <FormItem label="文章作者" prop="author">
-        <Input v-model="formValidate.author" placeholder="文章作者"></Input>
+        <Input v-model="formValidate.author" placeholder="文章作者" />
       </FormItem>
       <FormItem label="文章简介" prop="description">
-        <Input v-model="formValidate.description" placeholder="文章简介"></Input>
+        <Input v-model="formValidate.description" placeholder="文章简介" />
       </FormItem>
       <FormItem label="文章关键字" prop="keyword">
-        <Input v-model="formValidate.keyword" placeholder="文章简介"></Input>
+        <Input v-model="formValidate.keyword" placeholder="文章简介" />
       </FormItem>
       <FormItem label="文章分类" v-if="categoryList.length > 0">
         <Select v-model="formValidate.category_id">
@@ -24,7 +24,7 @@
             <Upload
               multiple
               type="drag"
-              action="http://up-z2.qiniu.com"
+              action="http://up.qiniup.com"
               :show-upload-list="false"
               :on-success="uploadSuccess"
               :on-error="uploadError"
@@ -110,7 +110,7 @@
       }),
       // 上传图片成功
       uploadSuccess(response) {
-        const url = `https://cdn.boblog.com/${response.key}`;
+        const url = `http://admin-blog-cdn.xiaojiu9.cn/${response.key}`;
         this.formValidate.cover = url;
         this.$Message.success('上传成功!');
       },

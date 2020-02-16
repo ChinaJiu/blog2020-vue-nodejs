@@ -7,7 +7,7 @@
         <template slot-scope="{ row }" slot="name">
           <strong>{{ row.name }}</strong>
         </template>
-        <template slot-scope="{ row, index }" slot="action">
+        <template slot-scope="{ row }" slot="action">
           <Button type="primary" size="small" style="margin-right: 5px" @click="update(row.id)">编辑</Button>
           <Button type="error" size="small" @click="destroy(row.id)">删除</Button>
         </template>

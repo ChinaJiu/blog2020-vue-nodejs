@@ -48,6 +48,7 @@
     "marked": "^0.7.0",
     "moment": "^2.24.0",
     "mysql2": "^1.6.5",
+    "nodemon": "^2.0.2",
     "npm-check": "^5.9.0",
     "redis": "^2.8.0",
     "require-directory": "^2.1.1",
