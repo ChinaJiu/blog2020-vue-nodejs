@@ -26,7 +26,7 @@ const router = new Router({
  * 创建文章
  */
 router.post('/article', new Auth(AUTH_ADMIN).m, async (ctx) => {
-
+  console.log(222)
   // 通过验证器校验参数是否通过
   const v = await new ArticleValidator().validate(ctx);
 
