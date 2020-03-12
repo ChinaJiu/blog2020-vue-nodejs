@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon app.js",
+    "prd":  "pm2 start app.js",
     "test": "jest _tests  --forceExit --runInBand --colors"
   },
   "repository": {

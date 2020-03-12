@@ -6,9 +6,11 @@ const redis = require('redis')
 const {REDIS_CONF} = require('../../core/redis')
 
 // 创建客户端
+RDS_OPTS = { auth_pass:REDIS_CONF.password }
 const redisClient = redis.createClient(
   REDIS_CONF.port,
-  REDIS_CONF.host
+  REDIS_CONF.host,
+  RDS_OPTS
 )
 
 redisClient.on('error', err => {
