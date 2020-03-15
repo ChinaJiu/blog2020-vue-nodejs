@@ -5,7 +5,6 @@ const cors = require('@koa/cors');
 const views = require('koa-views');
 const {resolve} = require('path')
 const koaStatic = require('koa-static')
-
 const catchError = require('./middlewares/exception')
 
 const app = new Koa()
@@ -14,7 +13,19 @@ app.use(koaStatic(__dirname + '/public'))
 app.use(views(resolve(__dirname, './views'), {
   extension: 'ejs'
 }))
-app.use(cors())
+app.use(cors({
+  origin: function (ctx) {
+      // if (ctx.url === '/test') {
+      //     return "*"; // 允许来自所有域名请求
+      // }
+      return '*'
+  },
+  exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
+  maxAge: 5,
+  credentials: true,
+  allowMethods: ['GET', 'POST', 'DELETE', 'OPTIONS', 'PUT'],
+  allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
+}))
 app.use(catchError)
 app.use(parser())
 
@@ -23,11 +34,5 @@ InitManager.initCore(app)
 app.listen(3000, () => {
   console.log('Koa is listening in http://localhost:3000')
 })
-
-//  防止异常出现 
-app.use((async (ctx,next)=>{
-  await ctx.set('Access-Control-Allow-Origin', '*') //允许通过所有的 
-  await next()
-}))
 
 module.exports = app
