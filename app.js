@@ -24,4 +24,10 @@ app.listen(3000, () => {
   console.log('Koa is listening in http://localhost:3000')
 })
 
+//  防止异常出现 
+app.use((async (ctx,next)=>{
+  await ctx.set('Access-Control-Allow-Origin', '*') //允许通过所有的 
+  await next()
+}))
+
 module.exports = app
