@@ -31,7 +31,7 @@ router.post('/advertise', async (ctx) => {
 
 // 删除广告
 router.delete('/advertise/:id', new Auth(AUTH_ADMIN).m, async (ctx) => {
-
+  console.log(123)
   // 通过验证器校验参数是否通过
   const v = await new PositiveArticleIdParamsValidator().validate(ctx);
 

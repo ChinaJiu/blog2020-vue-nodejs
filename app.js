@@ -21,6 +21,8 @@ app.use(cors({
       return '*'
   },
   exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
+  allowMethods: ['GET', 'POST', 'DELETE', 'PUT'],
+  // allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
   credentials: true
 }))
 app.use(catchError)
